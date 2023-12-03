@@ -2,7 +2,7 @@
 
 namespace StockExchange.Application.StockSnapshots;
 
-public class StockSnapshot
+public sealed class StockSnapshot
 {
     public Guid Id { get; internal init; }
     public string TickerSymbol { get; internal init; }

@@ -28,8 +28,4 @@
     <ProjectReference Include="..\..\src\StockExchange.Application\StockExchange.Application.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Stocks\" />
-  </ItemGroup>
-
 </Project>

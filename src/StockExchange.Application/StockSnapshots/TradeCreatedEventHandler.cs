@@ -3,7 +3,7 @@ using StockExchange.Application.Trades;
 
 namespace StockExchange.Application.StockSnapshots;
 
-public class TradeCreatedEventHandler(ITradeRepository tradeRepository, IStockSnapshotRepository stockSnapshotRepository)
+public sealed class TradeCreatedEventHandler(ITradeRepository tradeRepository, IStockSnapshotRepository stockSnapshotRepository)
     : INotificationHandler<TradeCreatedEvent>
 {
     public async Task Handle(TradeCreatedEvent notification, CancellationToken cancellationToken)

@@ -19,7 +19,7 @@ public class TradeCreatedEventHandlerTests
     }
 
     [Fact]
-    public async Task SnapshotOnlyAppliesNewTrades_WhenPreviousSnapshotFound()
+    public async Task SnapshotAppliesOnlyNewTrades_WhenPreviousSnapshotFound()
     {
         //Arrange
         _snapshotRepository

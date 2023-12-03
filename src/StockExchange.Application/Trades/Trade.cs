@@ -1,6 +1,6 @@
 ﻿namespace StockExchange.Application.Trades;
 
-public class Trade
+public sealed class Trade
 {
     public Guid Id { get; internal init; }
     public string TickerSymbol { get; internal init; }

@@ -2,5 +2,5 @@
 
 namespace StockExchange.Application.Trades;
 
-public record TradeCreatedEvent(string TickerSymbol) : INotification;
+public sealed record TradeCreatedEvent(string TickerSymbol) : INotification;
 

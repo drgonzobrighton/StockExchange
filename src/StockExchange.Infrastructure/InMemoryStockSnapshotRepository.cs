@@ -21,13 +21,23 @@ public class InMemoryStockSnapshotRepository : IStockSnapshotRepository
         return Task.CompletedTask;
     }
 
-    public Task<StockSnapshot> GetLatest(string tickerSymbol, CancellationToken cancellationToken = default)
+    public Task<StockSnapshot?> GetLatest(string tickerSymbol, CancellationToken cancellationToken = default)
     {
         var key = tickerSymbol.ToUpper();
 
         if (!_snapshots.TryGetValue(key, out var snapshots))
-            return Task.FromResult((StockSnapshot)null!);
+            return Task.FromResult((StockSnapshot?)null!);
 
         return Task.FromResult(snapshots.Last());
+    }
+
+    public Task<List<StockSnapshot>> GetAll(CancellationToken cancellationToken = default)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<List<StockSnapshot>> GetRange(string[] tickerSymbols, CancellationToken cancellationToken = default)
+    {
+        throw new NotImplementedException();
     }
 }
