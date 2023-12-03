@@ -1,7 +1,7 @@
-﻿using StockExchange.Application.Stocks.Snapshot;
+﻿using StockExchange.Application.StockSnapshots;
 using StockExchange.Application.Trades;
 
-namespace StockExchange.Application.UnitTests.Stocks.Snapshots;
+namespace StockExchange.Application.UnitTests.StockSnapshots;
 
 public class TradeCreatedEventHandlerTests
 {

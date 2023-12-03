@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using StockExchange.Application.Trades;
 
-namespace StockExchange.Application.Stocks.Snapshot;
+namespace StockExchange.Application.StockSnapshots;
 
 public class TradeCreatedEventHandler(ITradeRepository tradeRepository, IStockSnapshotRepository stockSnapshotRepository)
     : INotificationHandler<TradeCreatedEvent>

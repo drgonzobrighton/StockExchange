@@ -1,6 +1,6 @@
 ﻿using StockExchange.Application.Trades;
 
-namespace StockExchange.Application.Stocks.Snapshot;
+namespace StockExchange.Application.StockSnapshots;
 
 public class StockSnapshot
 {
@@ -12,14 +12,15 @@ public class StockSnapshot
 
     public void Apply(Trade trade)
     {
-        var multiplicator = trade.Type switch
+        var multiplicand = trade.Type switch
         {
             TradeType.Buy => 1,
             TradeType.Sell => -1,
+            _ => 1
         };
 
         var tradeValue = trade.NumberOfShares * trade.Price;
-        TotalShares += trade.NumberOfShares * multiplicator;
-        TotalValue += tradeValue * multiplicator;
+        TotalShares += trade.NumberOfShares * multiplicand;
+        TotalValue += tradeValue * multiplicand;
     }
 }
