@@ -10,7 +10,7 @@ public class TradesController : ControllerBase
 {
 
     [HttpPost]
-    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status202Accepted)]
     [ProducesResponseType<ResultErrors>(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> Create(
         [FromServices] CreateTradeCommandHandler handler,
@@ -20,7 +20,7 @@ public class TradesController : ControllerBase
         var result = await handler.Handle(command, cancellationToken);
 
         return result.Map<IActionResult>(
-            _ => Ok(),
+            _ => Accepted(),
             err => BadRequest(err));
     }
 }

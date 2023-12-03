@@ -11,6 +11,7 @@ public class InMemoryTradeRepository : ITradeRepository
     public Task<Result<Trade>> Add(Trade trade, CancellationToken cancellationToken)
     {
         var key = trade.TickerSymbol.ToUpper();
+
         if (!_tradeStreams.ContainsKey(key))
         {
             _tradeStreams[key] = new();
@@ -25,6 +26,16 @@ public class InMemoryTradeRepository : ITradeRepository
     {
         var key = tickerSymbol.ToUpper();
 
-        return Task.FromResult(_tradeStreams.TryGetValue(key, out var trades) ? trades : new List<Trade>());
+        if (!_tradeStreams.TryGetValue(key, out var trades))
+        {
+            return Task.FromResult(new List<Trade>());
+        }
+
+        if (from is not null)
+        {
+            trades = trades.Where(x => x.CreatedAt > from.Value).ToList();
+        }
+
+        return Task.FromResult(trades);
     }
 }

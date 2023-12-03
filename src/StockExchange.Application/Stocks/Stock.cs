@@ -1,4 +1,5 @@
 ﻿using StockExchange.Application.StockSnapshots;
+using System.Text.Json.Serialization;
 
 namespace StockExchange.Application.Stocks;
 
@@ -11,9 +12,20 @@ public class Stock
         Timestamp = timestamp;
     }
 
-    public string TickerSymbol { get; }
-    public decimal Value { get; }
-    public DateTime Timestamp { get; }
+    [JsonConstructor]
+    private Stock()
+    {
+
+    }
+
+    [JsonInclude]
+    public string TickerSymbol { get; private set; }
+
+    [JsonInclude]
+    public decimal Value { get; private set; }
+
+    [JsonInclude]
+    public DateTime Timestamp { get; private set; }
 
     public static Stock FromSnapshot(StockSnapshot snapshot)
     {

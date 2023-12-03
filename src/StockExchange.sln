@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockExchange.Infrastructur
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockExchange.Api", "StockExchange.Api\StockExchange.Api.csproj", "{F5244F03-537E-41A8-9116-CB2BEB0CB472}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockExchange.Api.AcceptenceTests", "..\tests\StockExchange.Api.AcceptenceTests\StockExchange.Api.AcceptenceTests.csproj", "{884FF2A7-3D58-44AF-87E7-182DBB045924}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{F5244F03-537E-41A8-9116-CB2BEB0CB472}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5244F03-537E-41A8-9116-CB2BEB0CB472}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5244F03-537E-41A8-9116-CB2BEB0CB472}.Release|Any CPU.Build.0 = Release|Any CPU
+		{884FF2A7-3D58-44AF-87E7-182DBB045924}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{884FF2A7-3D58-44AF-87E7-182DBB045924}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{884FF2A7-3D58-44AF-87E7-182DBB045924}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{884FF2A7-3D58-44AF-87E7-182DBB045924}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,6 +52,7 @@ Global
 		{3ADAA361-2B2B-4073-BA56-4D50E14210A2} = {46EEC456-6374-41A4-981F-B06510D78C05}
 		{2A3C271B-C8D9-4D2D-8FFE-E70561944A6E} = {FAE8B409-C9DE-41AD-9D63-B96EBB5F451E}
 		{F5244F03-537E-41A8-9116-CB2BEB0CB472} = {FAE8B409-C9DE-41AD-9D63-B96EBB5F451E}
+		{884FF2A7-3D58-44AF-87E7-182DBB045924} = {46EEC456-6374-41A4-981F-B06510D78C05}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C0FB74CF-B92A-4D14-8E7C-9F61A8A8CEFA}
