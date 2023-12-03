@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -11,5 +11,10 @@
 			<_Parameter1>StockExchange.Application.UnitTests</_Parameter1>
 		</AssemblyAttribute>
 	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="MediatR" Version="12.2.0" />
+	</ItemGroup>
+
 
 </Project>

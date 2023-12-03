@@ -27,9 +27,6 @@ public class Result<T>
 
     public static Result<T> Default => new(default(T)!);
 
-    public TResult Map<TResult>(Func<T, TResult> success, Func<ResultErrors, TResult> failure)
-        => _success ? success(_value) : failure(_errors);
-
     public void Do(Action<T> success, Action<ResultErrors> failure)
     {
         if (_success)
@@ -38,33 +35,12 @@ public class Result<T>
             failure(_errors);
     }
 
-    public async Task Do(Func<T, Task> success, Func<ResultErrors, Task> failure)
-    {
-        if (_success)
-            await success(_value);
-        else
-            await failure(_errors);
-    }
-
     public Result<T> Then(Func<T, Result<T>> next)
         => _success ? next(_value) : this;
 
     public async Task<Result<T>> Then(Func<T, Task<Result<T>>> next)
         => _success ? await next(_value) : this;
 
-    public Result<TNew> Convert<TNew>(Func<T, Result<TNew>> next)
-        => _success ? next(_value) : _errors;
-
-    public async Task<Result<TNew>> Convert<TNew>(Func<T, Task<Result<TNew>>> next)
-        => _success ? await next(_value) : _errors;
-
-    internal bool TryGetValue(out T value)
-    {
-        value = _value;
-        return _success;
-    }
-
-    internal ResultErrors GetErrors() => _errors;
     internal bool Success => _success;
 }
 
