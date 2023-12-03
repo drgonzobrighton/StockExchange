@@ -15,7 +15,6 @@ public class Stock
     [JsonConstructor]
     private Stock()
     {
-
     }
 
     [JsonInclude]
@@ -27,7 +26,7 @@ public class Stock
     [JsonInclude]
     public DateTime Timestamp { get; private set; }
 
-    public static Stock FromSnapshot(StockSnapshot snapshot)
+    internal static Stock FromSnapshot(StockSnapshot snapshot)
     {
         var stockPrice = snapshot.TotalShares != 0 ? snapshot.TotalValue / snapshot.TotalShares : 0;
 

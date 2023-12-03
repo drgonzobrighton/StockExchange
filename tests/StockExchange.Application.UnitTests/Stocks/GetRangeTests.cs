@@ -5,7 +5,7 @@ namespace StockExchange.Application.UnitTests.Stocks;
 
 public class GetRangeTests
 {
-    private readonly GetStockRangeQueryHandler _sut;
+    private readonly GetStocksBySymbolsQueryHandler _sut;
     private readonly Mock<IStockSnapshotRepository> _snapshotRepository;
 
     private const string Apple = "AAPL";
@@ -25,7 +25,7 @@ public class GetRangeTests
     public async Task ReturnsError_WhenSymbolsAreNotValid(string symbols)
     {
         //Act
-        var result = await _sut.Handle(new GetStockRangeQuery(symbols));
+        var result = await _sut.Handle(new GetStocksBySymbolsQuery(symbols));
 
         //Assert
         result.AssertFailure("At least one ticker symbol is required");

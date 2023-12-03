@@ -3,11 +3,11 @@ using StockExchange.Application.StockSnapshots;
 
 namespace StockExchange.Application.Stocks;
 
-public record GetStockRangeQuery(string Symbols);
+public record GetStocksBySymbolsQuery(string Symbols);
 
-public sealed class GetStockRangeQueryHandler(IStockSnapshotRepository repository)
+public sealed class GetStocksBySymbolsQueryHandler(IStockSnapshotRepository repository)
 {
-    public async Task<Result<List<Stock>>> Handle(GetStockRangeQuery query, CancellationToken cancellationToken = default)
+    public async Task<Result<List<Stock>>> Handle(GetStocksBySymbolsQuery query, CancellationToken cancellationToken = default)
     {
         if (string.IsNullOrWhiteSpace(query.Symbols))
             return new ResultErrors("At least one ticker symbol is required");
@@ -17,8 +17,7 @@ public sealed class GetStockRangeQueryHandler(IStockSnapshotRepository repositor
         if (!symbols.Any())
             return new ResultErrors("At least one ticker symbol is required");
 
-        var snapshots = await repository.GetRange(symbols, cancellationToken);
-
+        var snapshots = await repository.GetLatest(symbols, cancellationToken);
 
         return snapshots.Select(Stock.FromSnapshot).ToList();
     }

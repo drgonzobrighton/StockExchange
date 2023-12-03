@@ -21,24 +21,19 @@ public class InMemoryStockSnapshotRepository : IStockSnapshotRepository
         return Task.CompletedTask;
     }
 
-    public Task<StockSnapshot?> GetLatest(string tickerSymbol, CancellationToken cancellationToken = default)
+    public async Task<StockSnapshot?> GetLatest(string tickerSymbol, CancellationToken cancellationToken = default)
     {
-        var key = tickerSymbol.ToUpper();
-
-        if (!_snapshots.TryGetValue(key, out var snapshots))
-            return Task.FromResult((StockSnapshot?)null!);
-
-        return Task.FromResult(snapshots.Last());
+        return (await GetLatest(new[] { tickerSymbol }, cancellationToken)).FirstOrDefault();
     }
 
-    public Task<List<StockSnapshot>> GetAll(CancellationToken cancellationToken = default)
+    public Task<List<StockSnapshot>> GetLatest(CancellationToken cancellationToken = default)
     {
         var snapshots = _snapshots.Values.Select(x => x.Last()).ToList();
 
         return Task.FromResult(snapshots);
     }
 
-    public Task<List<StockSnapshot>> GetRange(string[] tickerSymbols, CancellationToken cancellationToken = default)
+    public Task<List<StockSnapshot>> GetLatest(string[] tickerSymbols, CancellationToken cancellationToken = default)
     {
         var snapshots = _snapshots
             .Where(x => tickerSymbols.Select(s => s.ToUpper()).Contains(x.Key))

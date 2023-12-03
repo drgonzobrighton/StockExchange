@@ -29,7 +29,7 @@ public class StocksController : ControllerBase
     [Route("all")]
     [ProducesResponseType<List<Stock>>(StatusCodes.Status200OK)]
     public async Task<IActionResult> GetAll(
-        [FromServices] GetAllStockQueryHandler handler,
+        [FromServices] GetAllStocksQueryHandler handler,
         CancellationToken cancellationToken = default)
     {
         var stocks = await handler.Handle(cancellationToken);
@@ -42,11 +42,11 @@ public class StocksController : ControllerBase
     [ProducesResponseType<List<Stock>>(StatusCodes.Status200OK)]
     [ProducesResponseType<ResultErrors>(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> GetRange(
-        [FromServices] GetStockRangeQueryHandler handler,
+        [FromServices] GetStocksBySymbolsQueryHandler handler,
         string tickerSymbols,
         CancellationToken cancellationToken = default)
     {
-        var result = await handler.Handle(new GetStockRangeQuery(tickerSymbols), cancellationToken);
+        var result = await handler.Handle(new GetStocksBySymbolsQuery(tickerSymbols), cancellationToken);
 
         return result.Map<IActionResult>(
             stock => Ok(stock),
