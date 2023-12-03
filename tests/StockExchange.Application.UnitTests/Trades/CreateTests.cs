@@ -54,9 +54,12 @@ public class CreateTests
         var result = await _sut.Handle(command);
 
         //Assert
-        result.AssertSuccess(trade => trade.Should().BeEquivalentTo(ValidTrade, opt => opt.Excluding(t => t.Id)));
+        result.AssertSuccess(trade => 
+        trade.Should().BeEquivalentTo(ValidTrade, opt => opt.Excluding(t => t.Id)));
 
-        _publisher.Verify(p => p.Publish(It.Is<TradeCreatedEvent>(t => t.TickerSymbol == command.TickerSymbol), It.IsAny<CancellationToken>()));
+        _publisher.Verify(p => p.Publish(
+            It.Is<TradeCreatedEvent>(t => t.TickerSymbol == command.TickerSymbol),
+            It.IsAny<CancellationToken>()));
     }
 
     [Fact]
@@ -77,7 +80,9 @@ public class CreateTests
         //Assert
         result.AssertFailure("Ticker symbol is required");
 
-        _publisher.Verify(p => p.Publish(It.Is<TradeCreatedEvent>(t => t.TickerSymbol == command.TickerSymbol), It.IsAny<CancellationToken>()), Times.Never);
+        _publisher.Verify(p => p.Publish(
+            It.Is<TradeCreatedEvent>(t => t.TickerSymbol == command.TickerSymbol),
+            It.IsAny<CancellationToken>()), Times.Never);
     }
 
     [Fact]
@@ -105,7 +110,9 @@ public class CreateTests
         //Assert
         result.AssertFailure(repoErrorMessage);
 
-        _publisher.Verify(p => p.Publish(It.Is<TradeCreatedEvent>(t => t.TickerSymbol == command.TickerSymbol), It.IsAny<CancellationToken>()), Times.Never);
+        _publisher.Verify(p => p.Publish(
+            It.Is<TradeCreatedEvent>(t => t.TickerSymbol == command.TickerSymbol),
+            It.IsAny<CancellationToken>()), Times.Never);
 
     }
 }
