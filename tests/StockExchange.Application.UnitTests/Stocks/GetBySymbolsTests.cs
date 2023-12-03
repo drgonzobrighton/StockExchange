@@ -3,55 +3,32 @@ using StockExchange.Application.StockSnapshots;
 
 namespace StockExchange.Application.UnitTests.Stocks;
 
-public class GetTests
+public class GetBySymbolsTests
 {
-    private readonly GetStockQueryHandler _sut;
+    private readonly GetStocksBySymbolsQueryHandler _sut;
     private readonly Mock<IStockSnapshotRepository> _snapshotRepository;
 
     private const string Apple = "AAPL";
 
-    public GetTests()
+    public GetRangeTests()
     {
         _snapshotRepository = new();
         _sut = new(_snapshotRepository.Object);
     }
 
-    [Fact]
-    public async Task ReturnsStock_WhenSnapshotFound()
-    {
-        //Arrange
-        var snapshot = new StockSnapshot
-        {
-            TickerSymbol = Apple,
-            TotalShares = 100,
-            TotalValue = 1000
-        };
-
-        _snapshotRepository
-            .Setup(x => x.GetLatest(Apple, It.IsAny<CancellationToken>()))
-            .ReturnsAsync(snapshot);
-
-        //Act
-        var result = await _sut.Handle(new GetStockQuery(Apple));
-
-        //Assert
-        result.AssertSuccess(stock =>
-        {
-            stock.TickerSymbol.Should().Be(Apple);
-            stock.Value.Should().Be(snapshot.TotalValue / snapshot.TotalShares);
-            stock.Timestamp.Should().Be(snapshot.LatestTradeDate);
-        });
-    }
 
     [Theory]
     [InlineData("")]
     [InlineData(null)]
-    public async Task ReturnsError_WhenTickerSymbolIsNullOrEmpty(string symbol)
+    [InlineData(", ")]
+    [InlineData(", ,  ")]
+    public async Task ReturnsError_WhenSymbolsAreNotValid(string symbols)
     {
         //Act
-        var result = await _sut.Handle(new GetStockQuery(symbol));
+        var result = await _sut.Handle(new GetStocksBySymbolsQuery(symbols));
 
         //Assert
-        result.AssertFailure("Ticker symbol is required");
+        result.AssertFailure("At least one ticker symbol is required");
     }
 }
+
