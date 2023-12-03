@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{FAE8B409-C9DE-41AD-9D63-B96EBB5F451E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{46EEC456-6374-41A4-981F-B06510D78C05}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockExchange.Application", "StockExchange.Application\StockExchange.Application.csproj", "{B35B67B9-BB3C-461A-B4DC-048EF0CBF4F4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B35B67B9-BB3C-461A-B4DC-048EF0CBF4F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B35B67B9-BB3C-461A-B4DC-048EF0CBF4F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B35B67B9-BB3C-461A-B4DC-048EF0CBF4F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B35B67B9-BB3C-461A-B4DC-048EF0CBF4F4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B35B67B9-BB3C-461A-B4DC-048EF0CBF4F4} = {FAE8B409-C9DE-41AD-9D63-B96EBB5F451E}
+	EndGlobalSection
+EndGlobal
