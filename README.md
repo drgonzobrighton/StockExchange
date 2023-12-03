@@ -7,7 +7,16 @@
   "price": 12,
   "numberOfShares": 1,
   "brokerId": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+}
+```
 
+### Stock response
+
+```json
+{
+  "tickerSymbol": "aapl",
+  "value": 10,
+  "timestamp": "2023-12-03T19:52:31.49Z"
 }
 ```
 

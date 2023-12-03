@@ -30,7 +30,6 @@ public class StocksController : ControllerBase
     [ProducesResponseType<List<Stock>>(StatusCodes.Status200OK)]
     public async Task<IActionResult> GetAll(
         [FromServices] GetAllStockQueryHandler handler,
-        string tickerSymbol,
         CancellationToken cancellationToken = default)
     {
         var stocks = await handler.Handle(cancellationToken);

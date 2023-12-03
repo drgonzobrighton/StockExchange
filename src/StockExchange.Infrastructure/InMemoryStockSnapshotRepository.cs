@@ -33,11 +33,18 @@ public class InMemoryStockSnapshotRepository : IStockSnapshotRepository
 
     public Task<List<StockSnapshot>> GetAll(CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        var snapshots = _snapshots.Values.Select(x => x.Last()).ToList();
+
+        return Task.FromResult(snapshots);
     }
 
     public Task<List<StockSnapshot>> GetRange(string[] tickerSymbols, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        var snapshots = _snapshots
+            .Where(x => tickerSymbols.Select(s => s.ToUpper()).Contains(x.Key))
+            .Select(x => x.Value.Last())
+            .ToList();
+
+        return Task.FromResult(snapshots);
     }
 }

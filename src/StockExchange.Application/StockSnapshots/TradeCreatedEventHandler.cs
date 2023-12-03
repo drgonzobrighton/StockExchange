@@ -32,7 +32,7 @@ public sealed class TradeCreatedEventHandler(ITradeRepository tradeRepository, I
         return new()
         {
             Id = Guid.NewGuid(),
-            TickerSymbol = notificationTickerSymbol,
+            TickerSymbol = notificationTickerSymbol.ToUpper(),
             TotalShares = latestSnapshot?.TotalShares ?? 0,
             TotalValue = latestSnapshot?.TotalValue ?? 0
         };
