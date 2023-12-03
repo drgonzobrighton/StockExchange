@@ -41,4 +41,16 @@ public class GetTests
             stock.Value.Should().Be(snapshot.TotalValue / snapshot.TotalShares);
         });
     }
+
+    [Theory]
+    [InlineData("")]
+    [InlineData(null)]
+    public async Task ReturnsError_WhenTickerSymbolIsNullOrEmpty(string symbol)
+    {
+        //Act
+        var result = await _sut.Handle(new GetStockQuery(symbol));
+
+        //Assert
+        result.AssertFailure("Ticker symbol is required");
+    }
 }

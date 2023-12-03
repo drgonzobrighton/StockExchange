@@ -10,6 +10,8 @@ public static class ServiceCollectionExtensions
     {
         return services
             .AddScoped<CreateTradeCommandHandler>()
-            .AddScoped<GetStockQueryHandler>();
+            .AddScoped<GetStockQueryHandler>()
+            .AddScoped<GetAllStockQueryHandler>()
+            .AddScoped<GetStockRangeQueryHandler>();
     }
 }
