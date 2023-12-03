@@ -82,7 +82,8 @@ public class CreateTests
 
         _publisher.Verify(p => p.Publish(
             It.Is<TradeCreatedEvent>(t => t.TickerSymbol == command.TickerSymbol),
-            It.IsAny<CancellationToken>()), Times.Never);
+            It.IsAny<CancellationToken>()), 
+            Times.Never);
     }
 
     [Fact]
@@ -112,7 +113,8 @@ public class CreateTests
 
         _publisher.Verify(p => p.Publish(
             It.Is<TradeCreatedEvent>(t => t.TickerSymbol == command.TickerSymbol),
-            It.IsAny<CancellationToken>()), Times.Never);
+            It.IsAny<CancellationToken>()), 
+            Times.Never);
 
     }
 }
