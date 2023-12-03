@@ -35,6 +35,9 @@ public class Result<T>
             failure(_errors);
     }
 
+    public TResult Map<TResult>(Func<T, TResult> success, Func<ResultErrors, TResult> failure)
+        => _success ? success(_value) : failure(_errors);
+
     public Result<T> Then(Func<T, Result<T>> next)
         => _success ? next(_value) : this;
 

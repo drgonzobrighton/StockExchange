@@ -1,4 +1,5 @@
 ﻿using StockExchange.Application.Trades;
+using System.Diagnostics;
 
 namespace StockExchange.Application.StockSnapshots;
 
@@ -16,7 +17,7 @@ public sealed class StockSnapshot
         {
             TradeType.Buy => 1,
             TradeType.Sell => -1,
-            _ => 1
+            _ => throw new UnreachableException()
         };
 
         var tradeValue = trade.NumberOfShares * trade.Price;

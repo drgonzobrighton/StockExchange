@@ -11,7 +11,7 @@ internal static class TradeValidator
         if (string.IsNullOrWhiteSpace(command.TickerSymbol))
             validationErrors.AddError("Ticker symbol is required");
 
-        if (command.Type is TradeType.Unknown)
+        if (!Enum.TryParse<TradeType>(command.Type, true, out var tradeType) || tradeType is TradeType.Unknown)
             validationErrors.AddError("Type is required");
 
         if (command.Price <= 0)

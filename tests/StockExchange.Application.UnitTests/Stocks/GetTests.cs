@@ -39,6 +39,7 @@ public class GetTests
         {
             stock.TickerSymbol.Should().Be(Apple);
             stock.Value.Should().Be(snapshot.TotalValue / snapshot.TotalShares);
+            stock.Timestamp.Should().Be(snapshot.LatestTradeDate);
         });
     }
 

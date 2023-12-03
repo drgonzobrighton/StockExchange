@@ -3,7 +3,7 @@ using StockExchange.Application.Common;
 
 namespace StockExchange.Application.Trades;
 
-public sealed record CreateTradeCommand(string TickerSymbol, TradeType Type, decimal Price, decimal NumberOfShares, Guid BrokerId, DateTime CreatedAt);
+public sealed record CreateTradeCommand(string TickerSymbol, string Type, decimal Price, decimal NumberOfShares, Guid BrokerId, DateTime CreatedAt);
 
 public sealed class CreateTradeCommandHandler(ITradeRepository tradeRepository, IPublisher publisher)
 {
@@ -16,7 +16,7 @@ public sealed class CreateTradeCommandHandler(ITradeRepository tradeRepository, 
                 {
                     Id = Guid.NewGuid(),
                     TickerSymbol = command.TickerSymbol,
-                    Type = command.Type,
+                    Type = Enum.Parse<TradeType>(command.Type, true),
                     Price = command.Price,
                     NumberOfShares = command.NumberOfShares,
                     BrokerId = command.BrokerId,

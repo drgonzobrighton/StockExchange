@@ -15,7 +15,7 @@ public sealed class GetStockQueryHandler(IStockSnapshotRepository repository)
         var latestSnapshot = await repository.GetLatest(query.TickerSymbol, cancellationToken);
 
         if (latestSnapshot is null)
-            return null!;
+            return Result<Stock?>.Default;
 
         return Stock.FromSnapshot(latestSnapshot);
     }

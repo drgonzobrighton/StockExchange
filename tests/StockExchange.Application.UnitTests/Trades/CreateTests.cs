@@ -44,7 +44,7 @@ public class CreateTests
         //Arrange
         var command = new CreateTradeCommand(
             ValidTrade.TickerSymbol,
-            ValidTrade.Type,
+            ValidTrade.Type.ToString(),
             ValidTrade.Price,
             ValidTrade.NumberOfShares,
             ValidTrade.BrokerId,
@@ -65,7 +65,7 @@ public class CreateTests
         //Arrange
         var command = new CreateTradeCommand(
             "",
-            ValidTrade.Type,
+            ValidTrade.Type.ToString(),
             ValidTrade.Price,
             ValidTrade.NumberOfShares,
             ValidTrade.BrokerId,
@@ -87,7 +87,7 @@ public class CreateTests
         var repoErrorMessage = "Oops, something went wrong";
         var command = new CreateTradeCommand(
             ValidTrade.TickerSymbol,
-            ValidTrade.Type,
+            ValidTrade.Type.ToString(),
             ValidTrade.Price,
             ValidTrade.NumberOfShares,
             ValidTrade.BrokerId,

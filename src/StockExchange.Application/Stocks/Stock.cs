@@ -19,6 +19,6 @@ public class Stock
     {
         var stockPrice = snapshot.TotalShares != 0 ? snapshot.TotalValue / snapshot.TotalShares : 0;
 
-        return new(snapshot.TickerSymbol, stockPrice, snapshot.LatestTradeDate);
+        return new(snapshot.TickerSymbol, decimal.Round(stockPrice, 2), snapshot.LatestTradeDate);
     }
 }

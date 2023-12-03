@@ -11,7 +11,7 @@ public class InMemoryTradeRepository : ITradeRepository
     public Task<Result<Trade>> Add(Trade trade, CancellationToken cancellationToken)
     {
         var key = trade.TickerSymbol.ToUpper();
-        if (_tradeStreams.ContainsKey(key))
+        if (!_tradeStreams.ContainsKey(key))
         {
             _tradeStreams[key] = new();
         }
