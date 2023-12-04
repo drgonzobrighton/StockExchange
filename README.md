@@ -109,6 +109,7 @@ This Stock Exchange API serves as a Minimum Viable Product (MVP) allowing users 
 
 - Add logging
 - Add auth
+- Add caching to get endpoints
 - Add error handling middleware
 - Consider moving snapshot creation to it's own service
 - Separate read and write databases
