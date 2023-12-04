@@ -11,11 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StockExchange.Application",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StockExchange.Application.UnitTests", "..\tests\StockExchange.Application.UnitTests\StockExchange.Application.UnitTests.csproj", "{3ADAA361-2B2B-4073-BA56-4D50E14210A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockExchange.Infrastructure", "StockExchange.Infrastructure\StockExchange.Infrastructure.csproj", "{2A3C271B-C8D9-4D2D-8FFE-E70561944A6E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StockExchange.Infrastructure", "StockExchange.Infrastructure\StockExchange.Infrastructure.csproj", "{2A3C271B-C8D9-4D2D-8FFE-E70561944A6E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockExchange.Api", "StockExchange.Api\StockExchange.Api.csproj", "{F5244F03-537E-41A8-9116-CB2BEB0CB472}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StockExchange.Api", "StockExchange.Api\StockExchange.Api.csproj", "{F5244F03-537E-41A8-9116-CB2BEB0CB472}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockExchange.Api.AcceptenceTests", "..\tests\StockExchange.Api.AcceptenceTests\StockExchange.Api.AcceptenceTests.csproj", "{884FF2A7-3D58-44AF-87E7-182DBB045924}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StockExchange.Api.AcceptanceTests", "..\tests\StockExchange.Api.AcceptenceTests\StockExchange.Api.AcceptanceTests.csproj", "{884FF2A7-3D58-44AF-87E7-182DBB045924}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

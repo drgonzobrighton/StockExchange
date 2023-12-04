@@ -26,7 +26,6 @@ public class StocksController : ControllerBase
     }
 
     [HttpGet]
-    [Route("all")]
     [ProducesResponseType<List<Stock>>(StatusCodes.Status200OK)]
     public async Task<IActionResult> GetAll(
         [FromServices] GetAllStocksQueryHandler handler,
@@ -38,7 +37,7 @@ public class StocksController : ControllerBase
     }
 
     [HttpGet]
-    [Route("range/{tickerSymbols}")]
+    [Route("range")]
     [ProducesResponseType<List<Stock>>(StatusCodes.Status200OK)]
     [ProducesResponseType<ResultErrors>(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> GetRange(

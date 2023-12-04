@@ -10,7 +10,7 @@ public class GetBySymbolsTests
 
     private const string Apple = "AAPL";
 
-    public GetRangeTests()
+    public GetBySymbolsTests()
     {
         _snapshotRepository = new();
         _sut = new(_snapshotRepository.Object);
