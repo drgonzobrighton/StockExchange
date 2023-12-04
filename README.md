@@ -88,22 +88,28 @@ This Stock Exchange API serves as a Minimum Viable Product (MVP) allowing users 
 
 ## Notes
 
-- Stock prices for a given ticker symbol are calculated simplistically by dividing the total stock value by the total number of stocks.
-- Stock values rely solely on stock snapshots and there is no interaction with the trade event stream.
+### Trade Event and Stock Snapshot:
+
+- Adding a new trade triggers an event that initiates the generation of a stock snapshot.
+- The snapshot is created by applying all trades that have occurred since the previous snapshot. If no previous snapshot is found, all trades are applied to generate the initial snapshot.
+
+### Stock Price Calculation:
+
+- Stock prices for a given ticker symbol are calculated simplistically. The calculation involves dividing the total stock value by the total number of stocks for that particular symbol.
+
+### Concurrency and Event Stream:
+
 - Trade submissions and snapshot creation occur concurrently in a single request.
+- Stock values rely solely on stock snapshots, and there is no direct interaction with the trade event stream for individual stock price calculations.
 
 ## Assumptions
 
 - Trades posted to the API are assumed to be pre-validated for overall integrity, including confirmed validity of price and quantity.
 
-## Nice to have
+## Future Improvements
 
-- Auth
-- Logging
-- Paginate response
-
-## Improvements
-
-- When getting stocks and no snapshot found, rehydrate from trade events.
-
-The rehydration of stock values from trade events is not required in the current implementation, as both the writing of trades and the creation of stock snapshots occur within the same request. Therefore, there is no need for additional rehydration when retrieving stock information.
+- Add logging
+- Add auth
+- Add error handling middleware
+- Consider moving snapshot creation to it's own service
+- Separate read and write databases
