@@ -1,6 +1,5 @@
 # Stock Exchange API
 
-Description:
 This Stock Exchange API serves as a Minimum Viable Product (MVP) allowing users to manage trades and retrieve stock prices. The API is designed to facilitate the addition of trades and the retrieval of stock prices for specified ticker symbols.
 
 ## Endpoints
