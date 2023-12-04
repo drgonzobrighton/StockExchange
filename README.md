@@ -108,8 +108,8 @@ This Stock Exchange API serves as a Minimum Viable Product (MVP) allowing users 
 ## Future Improvements
 
 - Add logging
-- Add auth
-- Add caching to get endpoints
+- Add authorisation infrastructure using a well-known methodology like OAuth 2.0
+- Implement a caching layer using the built-in .NET Cache object or evaluate the Redis Cache services of Azure to `GET` endpoints. Depending on business requirements, caching can be configured for a fixed period or invalidated dynamically when new `trade`s or `stock snapshot`s are created.
 - Add error handling middleware
 - Consider moving snapshot creation to it's own service
-- Separate read and write databases
+- Implement a CQRS pipelines to separate the write operations and their scalability from the read operations. This separation enhances scalability by allowing dedicated resources and optimization strategies for each type of operation.
